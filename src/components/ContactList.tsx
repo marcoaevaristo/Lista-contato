@@ -10,12 +10,22 @@ const List = styled.div`
   gap: 10px;
 `;
 
-const ContactList: React.FC = () => {
+interface ContactListProps { 
+  filter: string; 
+}
+
+const ContactList: React.FC<ContactListProps> = ({ filter }) => {
   const contacts = useSelector(selectContacts);
+
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase()) ||
+    contact.email.toLowerCase().includes(filter.toLowerCase()) ||
+    contact.phone.includes(filter)
+  );
 
   return (
     <List>
-      {contacts.map(contact => (
+      {filteredContacts.map(contact => (
         <ContactItem key={contact.id} contact={contact} />
       ))}
     </List>
@@ -23,3 +33,4 @@ const ContactList: React.FC = () => {
 };
 
 export default ContactList;
+

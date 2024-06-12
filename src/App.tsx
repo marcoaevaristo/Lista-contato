@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import ContactForm from './components/ContactForm';
-import ContactList from './components/ContactList';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import ContactsPage from './pages/ContactsPage';
 import GlobalStyle from './GlobalStyles';
 
 const Container = styled.div`
@@ -12,13 +14,18 @@ const Container = styled.div`
 
 const App: React.FC = () => {
   return (
-    <Container>
+    <Router>
       <GlobalStyle />
-      <h1>Lista de Contatos</h1>
-      <ContactForm />
-      <ContactList />
-    </Container>
+      <Navbar />
+      <Container>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Routes>
+      </Container>
+    </Router>
   );
 };
 
 export default App;
+

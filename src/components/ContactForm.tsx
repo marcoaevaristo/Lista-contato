@@ -5,12 +5,12 @@ import styled from 'styled-components';
 
 const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   gap: 10px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; 
 `;
 
 const Input = styled.input`
